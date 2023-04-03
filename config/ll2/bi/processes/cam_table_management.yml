@@ -1,0 +1,6 @@
+process_params:
+  co_process: 'CrtTab'   #CreateTable
+
+steps:
+  - !ReturnCrtTab
+    co_step: CrtTab

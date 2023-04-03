@@ -1,0 +1,59 @@
+etl.camsuc.datalake.source_mgperformance: abfss://#{CustomerPrefix}##{EnvironmentIdLower}#eunestadatalake@#{CustomerPrefix}##{EnvironmentIdLower}#eunestadatalake.dfs.core.windows.net/mg/mkt/performance
+etl.camsuc.datalake.source_mgmaster: abfss://#{CustomerPrefix}##{EnvironmentIdLower}#eunestadatalake@#{CustomerPrefix}##{EnvironmentIdLower}#eunestadatalake.dfs.core.windows.net/mg/mkt/master
+etl.camsuc.datalake.source_configasset: /project/camsuc/config/ConfigAsset.csv
+
+etl.camsuc.datalake.source_config: /project/camsuc/config
+etl.camsuc.datalake.source_trustedclientappbi: /home/shared/digitalplatform/trustedclientappBI.csv
+
+etl.camsuc.metastore.db_mp_tracking: sandboxbi # modificar por mp_mkt_tracking cuando esté disponible
+etl.camsuc.metastore.table_emailstats: mp_mkt_tracking_mkc_email_stats # modificar por las correcta cuando esté disponible
+etl.camsuc.metastore.table_pushstats: mp_mkt_tracking_mkc_mobile_push_stats # modificar por las correcta cuando esté disponible
+
+etl.camsuc.metastore.db_mg_performance: mg_mkt_performance
+etl.camsuc.metastore.table_controlgroup: cam_controlgroup
+etl.camsuc.metastore.table_impactsuccesscampaign: cam_impact_successcampaign
+etl.camsuc.metastore.table_lastclicksuccesscampaign: cam_lastclick_successcampaign
+
+etl.camsuc.metastore.db_mg_master: mg_mkt_master
+etl.camsuc.metastore.table_campaignsuccesstype: cam_campaign_successtype
+etl.camsuc.metastore.table_successtype: cam_successtype
+etl.camsuc.metastore.table_journeytype: cam_journeytype
+etl.camsuc.metastore.table_categorysegment: cam_categorysegment
+etl.camsuc.metastore.table_segment: cam_segment
+etl.camsuc.metastore.table_action: cam_action
+etl.camsuc.metastore.table_channel: cam_channel
+etl.camsuc.metastore.cam_cgtype: cam_cgtype
+
+etl.camsuc.metastore.db_mg_ottmiddleware: sandboxbi # modificar por mg_cli_ottmiddleware cuando esté disponible
+etl.camsuc.metastore.table_subscriptionevent: ott_subscription_event
+etl.camsuc.metastore.view_mwsubscription: mg_cli_ottmiddleware_vw.ott_subscription
+etl.camsuc.metastore.view_mwinvoice: mg_cli_ottmiddleware_vw.ott_invoice
+
+etl.camsuc.metastore.db_mg_segmentation: sandboxbi  # modificar por mg_cli_segmentation cuando esté disponible
+etl.camsuc.metastore.table_fanactbase: mg_cli_segmentation_fan_act_base  # modif cuando esté disponible
+etl.camsuc.metastore.table_fanconbase: mg_cli_segmentation_fan_con_base  # modif cuando esté disponible
+etl.camsuc.metastore.table_fanmasterproduct: mg_cli_segmentation_fan_master_product  # modif cuando esté disponible
+etl.camsuc.metastore.table_fanmastermetric: mg_cli_segmentation_fan_master_metric  # modif cuando esté disponible
+etl.camsuc.metastore.table_fanmetricmetricbase: mg_cli_segmentation_fan_rel_metric_metricbase  # modif cuando esté disponible
+etl.camsuc.metastore.table_fanactmetricprod: mg_cli_segmentation_fan_act_metric_prod  # modif cuando esté disponible
+etl.camsuc.metastore.table_fanconmetricprod: mg_cli_segmentation_fan_con_metric_prod  # modif cuando esté disponible
+
+etl.camsuc.metastore.table_fanconbaseattrib: mg_cli_segmentation_fan_con_base_att  # modif cuando esté disponible
+etl.camsuc.metastore.table_fanactsegmentprod: mg_cli_segmentation_fan_act_segment_d_prod # modif cuando esté disponible
+etl.camsuc.metastore.table_fanconsegmentprod: mg_cli_segmentation_fan_con_segment_d_prod # modif cuando esté disponible
+etl.camsuc.metastore.table_fanmastersegment: mg_cli_segmentation_fan_master_segment # modif cuando esté disponible
+
+etl.camsuc.metastore.view_cmscompetition: mg_dig_master_vw.cms_competition
+etl.camsuc.metastore.view_cmscassetapp: mg_dig_master_vw.cms_asset_app
+etl.camsuc.metastore.view_cmssport: mg_dig_master_vw.cms_sport
+etl.camsuc.metastore.view_cmsteam: mg_dig_master_vw.cms_team
+
+etl.camsuc.metastore.vacuum: 168
+etl.camsuc.segmentation.huobjectivecol: QtSecondsUsage
+llt.common.log.client.type: bplspark
+llt.process.log.enabled: false #Activar cuando se despliegue
+laliga.process.log.spark.database: entities_log
+laliga.process.log.enabled: false #Activar cuando se despliegue
+laliga.process.databricks_db.threads: False #Activar cuando se despliegue
+etl.camsuc.datalake.uri: abfss://#{CustomerPrefix}##{EnvironmentIdLower}#eunestadatalake@#{CustomerPrefix}##{EnvironmentIdLower}#eunestadatalake.dfs.core.windows.net
+etl.camsuc.telemetry.date.format: '%Y-%m-%d'

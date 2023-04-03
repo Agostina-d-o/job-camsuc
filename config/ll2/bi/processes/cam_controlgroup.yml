@@ -1,0 +1,5 @@
+process_params:
+  co_process: 'RaSeCg'
+steps:
+  - !ReturnRaSeCg
+    co_step: RaSeCg

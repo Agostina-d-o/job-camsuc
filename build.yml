@@ -1,0 +1,97 @@
+maintainer: ai@mailC.com # E-mail of project mantainer/owner
+enabled: yes # Enable the Jenkins pipeline execution (yes/no)
+
+project_name: camsuc # Project Name - in lowercase
+cluster_type: job # Cluster Type: etl/job/runs_submit/exploration
+
+metastore_jdo_query_pushdown: true
+
+job_secret:
+  - JobId-camsucRandomSelector # Secret used to store the JOB_ID
+  - JobId-camsucDimensionTables # Secret used to store the JOB_ID
+job_name:
+  - CAMSUC_RandomSelector
+  - CAMSUC_DimensionTables
+action_if_job_exists: # Action if job exist: delete / update (not recommended) / ignore
+  - update # CAMSUC_RandomSelector
+  - update # CAMSUC_DimensionTables
+cluster_name:
+  - CAMSUC_RandomSelector # Cluster Name
+  - CAMSUC_DimensionTables
+min_workers:
+  - 1  # CAMSUC_RandomSelector
+  - 1  # CAMSUC_DimensionTables
+max_workers:
+  - 2 # CAMSUC_RandomSelector
+  - 2 # CAMSUC_DimensionTables
+spark_version:
+  - 10.4.x-scala2.12 # Spark Version
+  - 10.4.x-scala2.12 # CAMSUC_DimensionTables
+node_type_id:
+  - Standard_DS14_v2 # # CAMSUC_RandomSelector
+  - Standard_DS14_v2 # # CAMSUC_DimensionTables
+instance_pool:
+  -
+  -
+notebook_task:
+  path:
+    - camsuc_controlgroup
+    - camsuc_dimensiontables
+  parameters:
+    -  # Notebook parameters
+    -
+spot_instances:
+  spot_environments:
+    - bi,ts,qa    # CAMSUC_RandomSelector
+    - bi,ts,qa    # CAMSUC_DimensionTables
+  spot_first_on_demand:
+    - 1    # CAMSUC_RandomSelector
+    - 1    # CAMSUC_DimensionTables
+  spot_availability:
+    - SPOT_WITH_FALLBACK_AZURE    # CAMSUC_RandomSelector
+    - SPOT_WITH_FALLBACK_AZURE    # CAMSUC_DimensionTables
+
+email_notification:
+  email_job_start: ai@mailC.com # mail start - notification (optional)
+  email_job_success: ai@mailC.com # mail success - notification (optional)
+  email_job_failure: ai@mailC.com # mail failure - notificacion (optional)
+
+local_libraries:
+  pypi_name:
+  pypi_repo:                                            # Repo https://nexus.librerias.local
+  wheel_path:                                           # dbfs:/whl_path
+  jar_path:                                             # dbfs:/jar_path
+
+remote_libraries:
+  rpypi_name:
+    # - #numpy                                          # LibraryName==version (optional)
+  maven_lib:                                            # "groupId:artifactId:version" (double quotes required)
+
+schedule:                                               # Job run schedule (one entry per job (job_name), in the same order)
+  schedule_quartz_cron:                                 # Quartz cron expression which will indicate when and how often the job will run automatically
+    -
+  schedule_timezone:                                    # It will indicate the reference timezone for each cron expression (e.g. -> UTC or Europe/Madrid)
+    -
+
+retry_on_timeout:                                       # Retry a job when it times out
+  - no # CAMSUC_RandomSelector
+  - no # CAMSUC_DimensionTables
+
+retry_interval: # Minimal interval in milliseconds between the start of the failed run and the subsequent retry run
+  - 0 # CAMSUC_RandomSelector
+  - 0 # CAMSUC_DimensionTables
+timeout: # Timeout in seconds applied to each run of this job (0 for no timeout)
+  - 0 # CAMSUC_RandomSelector
+  - 0 # CAMSUC_DimensionTables
+autoscale: # Autoescaling
+  - no # CAMSUC_RandomSelector
+  - no # CAMSUC_DimensionTables
+concurrent_runs: # Allowed number of concurrent runs of the job.
+  - 1 # CAMSUC_RandomSelector
+  - 1 # CAMSUC_DimensionTables
+max_retries: # Maximum number of times to retry an unsuccessful run. The value "-1" means to retry indefinitely and the value 0 means to never retry.
+  - 0 # CAMSUC_RandomSelector
+  - 0 # CAMSUC_DimensionTables
+drivers_max_result_size: # Limit of total size of serialized results of all partitions for each Spark action (e.g. collect) in bytes. 4g by default.
+  - 8g # CAMSUC_RandomSelector
+  - 8g # CAMSUC_DimensionTables
